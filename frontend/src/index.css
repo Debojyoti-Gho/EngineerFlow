@@ -2758,12 +2758,13 @@ body {
 
 /* --- ORBIT ANIMATION --- */
 .logo-orbit {
-  animation: orbit-spin 1s linear infinite !important;
+  animation: orbit-spin 2s cubic-bezier(0.4, 0, 0.2, 1) infinite !important;
 }
 
 @keyframes orbit-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  0% { transform: rotate(0deg); }
+  60% { transform: rotate(360deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .logo-orbit::after {
