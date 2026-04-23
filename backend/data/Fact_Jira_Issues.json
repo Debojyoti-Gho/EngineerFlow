@@ -70,5 +70,586 @@
     "status": "Done",
     "in_progress_at": "2026-04-23T08:00:00Z",
     "done_at": "2026-04-23T16:00:00Z"
+  },
+  {
+    "id": "iss_dev_3_0",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-01T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_1",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-03T10:00:00.000Z",
+    "done_at": "2026-04-03T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_2",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-05T10:00:00.000Z",
+    "done_at": "2026-04-05T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_3",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-07T10:00:00.000Z",
+    "done_at": "2026-04-07T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_4",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-09T10:00:00.000Z",
+    "done_at": "2026-04-09T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_5",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T10:00:00.000Z",
+    "done_at": "2026-04-11T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_6",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-13T10:00:00.000Z",
+    "done_at": "2026-04-13T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_7",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-15T10:00:00.000Z",
+    "done_at": "2026-04-15T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_8",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-17T10:00:00.000Z",
+    "done_at": "2026-04-17T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_9",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-19T10:00:00.000Z",
+    "done_at": "2026-04-19T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_10",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-21T10:00:00.000Z",
+    "done_at": "2026-04-21T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_3_11",
+    "developerId": "dev_3",
+    "status": "Done",
+    "in_progress_at": "2026-04-23T10:00:00.000Z",
+    "done_at": "2026-04-23T22:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_0",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-02T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_1",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-03T10:00:00.000Z",
+    "done_at": "2026-04-04T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_2",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-05T10:00:00.000Z",
+    "done_at": "2026-04-06T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_3",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-07T10:00:00.000Z",
+    "done_at": "2026-04-08T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_4",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-09T10:00:00.000Z",
+    "done_at": "2026-04-10T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_5",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T10:00:00.000Z",
+    "done_at": "2026-04-12T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_6",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-13T10:00:00.000Z",
+    "done_at": "2026-04-14T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_7",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-15T10:00:00.000Z",
+    "done_at": "2026-04-16T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_8",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-17T10:00:00.000Z",
+    "done_at": "2026-04-18T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_9",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-19T10:00:00.000Z",
+    "done_at": "2026-04-20T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_10",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-21T10:00:00.000Z",
+    "done_at": "2026-04-22T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_11",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-23T10:00:00.000Z",
+    "done_at": "2026-04-24T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_12",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-25T10:00:00.000Z",
+    "done_at": "2026-04-26T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_13",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-27T10:00:00.000Z",
+    "done_at": "2026-04-28T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_4_14",
+    "developerId": "dev_4",
+    "status": "Done",
+    "in_progress_at": "2026-04-29T10:00:00.000Z",
+    "done_at": "2026-04-30T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_0",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-02T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_1",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-04T10:00:00.000Z",
+    "done_at": "2026-04-05T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_2",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-07T10:00:00.000Z",
+    "done_at": "2026-04-08T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_3",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-10T10:00:00.000Z",
+    "done_at": "2026-04-11T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_4",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-13T10:00:00.000Z",
+    "done_at": "2026-04-14T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_5",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-16T10:00:00.000Z",
+    "done_at": "2026-04-17T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_6",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-19T10:00:00.000Z",
+    "done_at": "2026-04-20T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_5_7",
+    "developerId": "dev_5",
+    "status": "Done",
+    "in_progress_at": "2026-04-22T10:00:00.000Z",
+    "done_at": "2026-04-23T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_6_0",
+    "developerId": "dev_6",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-13T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_6_1",
+    "developerId": "dev_6",
+    "status": "Done",
+    "in_progress_at": "2026-04-06T10:00:00.000Z",
+    "done_at": "2026-04-18T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_6_2",
+    "developerId": "dev_6",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T10:00:00.000Z",
+    "done_at": "2026-04-23T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_6_3",
+    "developerId": "dev_6",
+    "status": "Done",
+    "in_progress_at": "2026-04-16T10:00:00.000Z",
+    "done_at": "2026-04-28T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_6_4",
+    "developerId": "dev_6",
+    "status": "Done",
+    "in_progress_at": "2026-04-21T10:00:00.000Z",
+    "done_at": "2026-05-03T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_8_0",
+    "developerId": "dev_8",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-02T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_8_1",
+    "developerId": "dev_8",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T10:00:00.000Z",
+    "done_at": "2026-04-12T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_8_2",
+    "developerId": "dev_8",
+    "status": "Done",
+    "in_progress_at": "2026-04-21T10:00:00.000Z",
+    "done_at": "2026-04-22T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_0",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-01T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_1",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T22:00:00.000Z",
+    "done_at": "2026-04-02T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_2",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-02T10:00:00.000Z",
+    "done_at": "2026-04-02T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_3",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-02T22:00:00.000Z",
+    "done_at": "2026-04-03T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_4",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-03T10:00:00.000Z",
+    "done_at": "2026-04-03T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_5",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-03T22:00:00.000Z",
+    "done_at": "2026-04-04T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_6",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-04T10:00:00.000Z",
+    "done_at": "2026-04-04T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_7",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-04T22:00:00.000Z",
+    "done_at": "2026-04-05T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_8",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-05T10:00:00.000Z",
+    "done_at": "2026-04-05T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_9",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-05T22:00:00.000Z",
+    "done_at": "2026-04-06T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_10",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-06T10:00:00.000Z",
+    "done_at": "2026-04-06T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_11",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-06T22:00:00.000Z",
+    "done_at": "2026-04-07T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_12",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-07T10:00:00.000Z",
+    "done_at": "2026-04-07T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_13",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-07T22:00:00.000Z",
+    "done_at": "2026-04-08T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_14",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-08T10:00:00.000Z",
+    "done_at": "2026-04-08T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_15",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-08T22:00:00.000Z",
+    "done_at": "2026-04-09T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_16",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-09T10:00:00.000Z",
+    "done_at": "2026-04-09T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_17",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-09T22:00:00.000Z",
+    "done_at": "2026-04-10T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_18",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-10T10:00:00.000Z",
+    "done_at": "2026-04-10T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_19",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-10T22:00:00.000Z",
+    "done_at": "2026-04-11T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_20",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T10:00:00.000Z",
+    "done_at": "2026-04-11T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_21",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T22:00:00.000Z",
+    "done_at": "2026-04-12T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_22",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-12T10:00:00.000Z",
+    "done_at": "2026-04-12T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_23",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-12T22:00:00.000Z",
+    "done_at": "2026-04-13T04:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_9_24",
+    "developerId": "dev_9",
+    "status": "Done",
+    "in_progress_at": "2026-04-13T10:00:00.000Z",
+    "done_at": "2026-04-13T16:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_10_0",
+    "developerId": "dev_10",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-06T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_10_1",
+    "developerId": "dev_10",
+    "status": "Done",
+    "in_progress_at": "2026-04-08T10:00:00.000Z",
+    "done_at": "2026-04-13T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_10_2",
+    "developerId": "dev_10",
+    "status": "Done",
+    "in_progress_at": "2026-04-15T10:00:00.000Z",
+    "done_at": "2026-04-20T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_10_3",
+    "developerId": "dev_10",
+    "status": "Done",
+    "in_progress_at": "2026-04-22T10:00:00.000Z",
+    "done_at": "2026-04-27T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_11_1",
+    "developerId": "dev_11",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-16T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_0",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-01T10:00:00.000Z",
+    "done_at": "2026-04-02T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_1",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-04T10:00:00.000Z",
+    "done_at": "2026-04-05T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_2",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-07T10:00:00.000Z",
+    "done_at": "2026-04-08T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_3",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-10T10:00:00.000Z",
+    "done_at": "2026-04-11T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_4",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-13T10:00:00.000Z",
+    "done_at": "2026-04-14T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_5",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-16T10:00:00.000Z",
+    "done_at": "2026-04-17T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_6",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-19T10:00:00.000Z",
+    "done_at": "2026-04-20T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_7",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-22T10:00:00.000Z",
+    "done_at": "2026-04-23T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_8",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-25T10:00:00.000Z",
+    "done_at": "2026-04-26T10:00:00.000Z"
+  },
+  {
+    "id": "iss_dev_12_9",
+    "developerId": "dev_12",
+    "status": "Done",
+    "in_progress_at": "2026-04-28T10:00:00.000Z",
+    "done_at": "2026-04-29T10:00:00.000Z"
   }
 ]

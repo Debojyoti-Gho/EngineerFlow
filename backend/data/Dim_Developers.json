@@ -1,4 +1,62 @@
 [
-  { "id": "dev_1", "name": "Alice Developer", "role": "Full Stack" },
-  { "id": "dev_2", "name": "Bob Engineer", "role": "Backend" }
+  {
+    "id": "dev_1",
+    "name": "Alice Developer",
+    "role": "Full Stack"
+  },
+  {
+    "id": "dev_2",
+    "name": "Bob Engineer",
+    "role": "Backend"
+  },
+  {
+    "id": "dev_3",
+    "name": "Sarah Chen",
+    "role": "Senior Frontend"
+  },
+  {
+    "id": "dev_4",
+    "name": "Marcus Thorne",
+    "role": "Backend Architect"
+  },
+  {
+    "id": "dev_5",
+    "name": "Elena Rodriguez",
+    "role": "DevOps Lead"
+  },
+  {
+    "id": "dev_6",
+    "name": "David Kim",
+    "role": "Product Engineer"
+  },
+  {
+    "id": "dev_7",
+    "name": "Priya Sharma",
+    "role": "QA Automation"
+  },
+  {
+    "id": "dev_8",
+    "name": "Alex Rivera",
+    "role": "Security Engineer"
+  },
+  {
+    "id": "dev_9",
+    "name": "Jordan Smith",
+    "role": "Full Stack"
+  },
+  {
+    "id": "dev_10",
+    "name": "Sami Al-Farsi",
+    "role": "Junior Developer"
+  },
+  {
+    "id": "dev_11",
+    "name": "Taylor Vance",
+    "role": "Platform Engineer"
+  },
+  {
+    "id": "dev_12",
+    "name": "Li Na",
+    "role": "Site Reliability"
+  }
 ]

@@ -1,5 +1,124 @@
 [
-  { "id": "b1", "developerId": "dev_1", "reportedAt": "2026-04-10T10:00:00Z", "severity": "High" },
-  { "id": "b2", "developerId": "dev_1", "reportedAt": "2026-04-15T10:00:00Z", "severity": "Medium" },
-  { "id": "b3", "developerId": "dev_2", "reportedAt": "2026-04-12T10:00:00Z", "severity": "Low" }
+  {
+    "id": "b1",
+    "developerId": "dev_1",
+    "reportedAt": "2026-04-10T10:00:00Z",
+    "severity": "High"
+  },
+  {
+    "id": "b2",
+    "developerId": "dev_1",
+    "reportedAt": "2026-04-15T10:00:00Z",
+    "severity": "Medium"
+  },
+  {
+    "id": "b3",
+    "developerId": "dev_2",
+    "reportedAt": "2026-04-12T10:00:00Z",
+    "severity": "Low"
+  },
+  {
+    "id": "bug_dev_4_0",
+    "developerId": "dev_4"
+  },
+  {
+    "id": "bug_dev_4_1",
+    "developerId": "dev_4"
+  },
+  {
+    "id": "bug_dev_4_2",
+    "developerId": "dev_4"
+  },
+  {
+    "id": "bug_dev_4_3",
+    "developerId": "dev_4"
+  },
+  {
+    "id": "bug_dev_4_4",
+    "developerId": "dev_4"
+  },
+  {
+    "id": "bug_dev_4_5",
+    "developerId": "dev_4"
+  },
+  {
+    "id": "bug_dev_9_0",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_1",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_2",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_3",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_4",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_5",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_6",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_7",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_8",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_9_9",
+    "developerId": "dev_9"
+  },
+  {
+    "id": "bug_dev_12_0",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_1",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_2",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_3",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_4",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_5",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_6",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_7",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_8",
+    "developerId": "dev_12"
+  },
+  {
+    "id": "bug_dev_12_9",
+    "developerId": "dev_12"
+  }
 ]
