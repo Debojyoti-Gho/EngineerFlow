@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const AIChat = ({ metrics, bottlenecks }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,10 +8,12 @@ const AIChat = ({ metrics, bottlenecks }) => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const chatEndRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+        messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -27,7 +30,8 @@ const AIChat = ({ metrics, bottlenecks }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5001/api/chat', {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api';
+      const response = await fetch(`${baseUrl}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -83,11 +87,11 @@ const AIChat = ({ metrics, bottlenecks }) => {
             <h4>AI Productivity Assistant</h4>
           </div>
 
-          <div className="chat-messages">
+          <div className="chat-messages" ref={messagesEndRef}>
             {messages.map((msg, i) => (
               <div key={i} className={`message ${msg.role}`}>
                 <div className="message-bubble">
-                  {msg.content}
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
               </div>
             ))}
@@ -100,7 +104,6 @@ const AIChat = ({ metrics, bottlenecks }) => {
                 </div>
               </div>
             )}
-            <div ref={chatEndRef} />
           </div>
 
           <form className="chat-input-area" onSubmit={handleSend}>

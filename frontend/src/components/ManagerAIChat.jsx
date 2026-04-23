@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 const ManagerAIChat = ({ teamData }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,10 +8,12 @@ const ManagerAIChat = ({ teamData }) => {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const chatEndRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollTop = messagesEndRef.current.scrollHeight;
+    }
   };
 
   useEffect(() => {
@@ -66,10 +69,12 @@ const ManagerAIChat = ({ teamData }) => {
             <h4>Fleet Intelligence Assistant</h4>
           </div>
 
-          <div className="manager-chat-messages">
+          <div className="manager-chat-messages" ref={messagesEndRef}>
             {messages.map((msg, i) => (
               <div key={i} className={`m-message ${msg.role}`}>
-                <div className="m-bubble">{msg.content}</div>
+                <div className="m-bubble">
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                </div>
               </div>
             ))}
             {isLoading && (
@@ -77,7 +82,6 @@ const ManagerAIChat = ({ teamData }) => {
                 <div className="m-bubble loading">Analyzing fleet data...</div>
               </div>
             )}
-            <div ref={chatEndRef} />
           </div>
 
           <form className="manager-chat-input" onSubmit={handleSend}>
