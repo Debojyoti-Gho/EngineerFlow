@@ -268,19 +268,29 @@ const InsightPanel = ({ metrics, bottlenecks, suggestions, onExplain, loading = 
               {isPaused ? '▶' : '||'}
             </button>
           </div>
-          <div className="explanation-content">
-        {loading ? (
-          <div className="skeleton-insight-wrapper">
-             <div className="skeleton-text skeleton" style={{ width: '90%', marginBottom: '15px' }}></div>
-             <div className="skeleton-text skeleton" style={{ width: '100%', marginBottom: '15px' }}></div>
-             <div className="skeleton-text skeleton" style={{ width: '85%', marginBottom: '15px' }}></div>
-             <div className="skeleton-text skeleton" style={{ width: '95%', marginBottom: '15px' }}></div>
-             <div className="skeleton-text skeleton" style={{ width: '40%', marginBottom: '15px' }}></div>
+          
+          <div className="carousel-inner">
+            {renderChart(currentSlide)}
           </div>
-        ) : (
-          <div dangerouslySetInnerHTML={{ __html: explanation }} />
-        )}
-      </div>
+
+          {/* AI Executive Summary Section */}
+          {(loading || explanation) && (
+            <div className="explanation-content" style={{ marginTop: '1.5rem', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '1.5rem' }}>
+              <h5 className="sub-label" style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ color: 'var(--primary)' }}>✦</span> AI Executive Summary
+              </h5>
+              {loading ? (
+                <div className="skeleton-insight-wrapper">
+                  <div className="skeleton-text skeleton" style={{ width: '90%', marginBottom: '12px' }}></div>
+                  <div className="skeleton-text skeleton" style={{ width: '100%', marginBottom: '12px' }}></div>
+                  <div className="skeleton-text skeleton" style={{ width: '85%', marginBottom: '12px' }}></div>
+                </div>
+              ) : (
+                <div className="ai-narrative-text" dangerouslySetInnerHTML={{ __html: explanation }} />
+              )}
+            </div>
+          )}
+
           <div className="carousel-dots">
             {[0, 1, 2, 3].map(i => (
               <div key={i} className={`dot ${currentSlide === i ? 'active' : ''}`} onClick={() => setCurrentSlide(i)}></div>
