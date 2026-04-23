@@ -2755,3 +2755,18 @@ body {
   transform: rotate(180deg) scale(1.1);
   background: var(--primary-glow);
 }
+
+/* --- ORBIT ANIMATION --- */
+.logo-orbit {
+  animation: orbit-spin 1s linear infinite !important;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logo-orbit::after {
+  box-shadow: 0 0 15px #fff, 0 0 30px var(--primary);
+  filter: blur(0.5px);
+}
