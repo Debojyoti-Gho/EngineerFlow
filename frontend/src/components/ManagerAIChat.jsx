@@ -27,7 +27,8 @@ const ManagerAIChat = ({ teamData }) => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:5001/api/manager/chat', {
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api';
+      const response = await fetch(`${baseUrl}/manager/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
