@@ -77,10 +77,12 @@ const chatWithAnalysis = async (message, data) => {
     USER QUESTION: "${message}"
 
     INSTRUCTIONS:
-    1. Answer the user's question directly using the provided context.
-    2. Maintain a premium, helpful, and engineering-focused tone.
-    3. If the user asks for advice, refer to the bottlenecks and suggestions.
-    4. Keep the response concise but insightful.
+    1. Answer the user's question directly and conversationally using the provided context.
+    2. Do NOT provide a generic summary unless specifically asked.
+    3. If the user asks if you can do something, answer "Yes" and explain how you can help with their data.
+    4. Maintain a premium, helpful, and engineering-focused tone.
+    5. Refer to the metrics and bottlenecks ONLY when it helps answer the question.
+    6. Keep the response concise but insightful.
   `;
 
   try {
@@ -123,10 +125,12 @@ const managerChat = async (message, teamData) => {
     MANAGER QUESTION: "${message}"
 
     INSTRUCTIONS:
-    1. Provide insights across the entire team.
-    2. Identify who needs help, where resource allocation might be shifted, or which team-wide trends are concerning.
-    3. Be professional, strategic, and concise.
-    4. Refer to specific engineers by name if relevant.
+    1. Answer the manager's question directly and conversationally.
+    2. Only provide a team-wide summary if the manager asks for an overview or "insights".
+    3. If the manager asks about capabilities (e.g., "can I ask about X?"), confirm your ability and provide a brief example based on the team data.
+    4. Be professional, strategic, and concise.
+    5. Refer to specific engineers by name ONLY when relevant to the question.
+    6. Ensure the tone is leadership-grade and actionable.
   `;
 
   try {

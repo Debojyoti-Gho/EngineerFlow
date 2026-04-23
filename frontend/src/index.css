@@ -2607,3 +2607,26 @@ body {
   transform: scale(1.05);
   box-shadow: 0 0 15px var(--primary);
 }
+
+/* Markdown Styling in Chat Bubbles */
+.m-bubble strong, .message-bubble strong {
+  color: #fff;
+  font-weight: 800;
+}
+
+.m-bubble ul, .message-bubble ul {
+  padding-left: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.m-bubble li, .message-bubble li {
+  margin-bottom: 0.3rem;
+}
+
+.m-bubble p, .message-bubble p {
+  margin-bottom: 0.8rem;
+}
+
+.m-bubble p:last-child, .message-bubble p:last-child {
+  margin-bottom: 0;
+}
