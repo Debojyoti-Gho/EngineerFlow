@@ -1,7 +1,18 @@
 import React, { useRef } from 'react';
 
-const MetricCard = ({ label, value, status, unit, subtitle, trend, index = 0 }) => {
+const MetricCard = ({ label, value, status, unit, subtitle, trend, index = 0, loading = false }) => {
   const cardRef = useRef(null);
+
+  if (loading) {
+    return (
+      <div className="metric-card skeleton-card">
+        <div className="skeleton-text skeleton" style={{ width: '40%', marginBottom: '1rem' }}></div>
+        <div className="skeleton-text skeleton" style={{ width: '70%', marginBottom: '1rem' }}></div>
+        <div className="skeleton-text skeleton" style={{ height: '3rem', width: '50%' }}></div>
+      </div>
+    );
+  }
+
   const isPositiveTrend = trend === 'down' ? (label.includes('Time') || label.includes('Rate')) : true;
 
   const handleMouseMove = (e) => {

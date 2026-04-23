@@ -63,7 +63,8 @@ function App() {
     return { score, status: "Healthy", class: "healthy", msg: "System flow is within optimal parameters" };
   };
 
-  if (loading && !data) return <div className="dashboard-container" style={{ textAlign: 'center', marginTop: '10rem', color: 'var(--text-muted)' }}>Initializing Insight Engine...</div>;
+  // Removed the basic loading text fallback to use skeletal loading instead
+  // if (loading && !data) return <div className="dashboard-container" style={{ textAlign: 'center', marginTop: '10rem', color: 'var(--text-muted)' }}>Initializing Insight Engine...</div>;
 
   const health = getHealthMeta();
 
@@ -118,33 +119,49 @@ function App() {
       <main className="dashboard-container">
         {view === 'manager' ? (
           <ManagerView devs={devs} />
-        ) : data && (
+        ) : (
           <>
-            <section className={`hero-health ${health.class}`}>
-              <div>
-                <div className="health-val">{health.score}%</div>
-                <div style={{ textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em' }}>Aggregate Signal • {health.score}% {health.status}</div>
-              </div>
-              <div style={{ textAlign: 'right', maxWidth: '400px' }}>
-                <div style={{ fontSize: '1.1rem', fontWeight: 500, marginBottom: '0.5rem' }}>{health.msg}</div>
-                <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>Methodology: Deterministic Logic + LLM Narrative Synthesis</div>
-              </div>
-            </section>
+            {loading ? (
+              <>
+                <section className="hero-health skeleton-card" style={{ height: '100px', marginBottom: '2rem' }}>
+                  <div className="skeleton-text skeleton" style={{ width: '200px' }}></div>
+                </section>
+                <section className="metrics-grid">
+                  {[1, 2, 3, 4, 5].map(i => <MetricCard key={i} loading={true} />)}
+                </section>
+                <div className="skeleton skeleton-insight"></div>
+              </>
+            ) : data && (
+              <>
+                <section className={`hero-health ${health.class}`}>
+                  <div>
+                    <div className="health-val">{health.score}%</div>
+                    <div style={{ textTransform: 'uppercase', fontSize: '0.8rem', fontWeight: 700, letterSpacing: '0.1em' }}>Aggregate Signal • {health.score}% {health.status}</div>
+                  </div>
+                  <div style={{ textAlign: 'right', maxWidth: '400px' }}>
+                    <div style={{ fontSize: '1.1rem', fontWeight: 500, marginBottom: '0.5rem' }}>{health.msg}</div>
+                    <div style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>Methodology: Deterministic Logic + LLM Narrative Synthesis</div>
+                  </div>
+                </section>
 
-            <section className="metrics-grid">
-              <MetricCard index={0} label="Delivery Speed" value={data.metrics.leadTime} unit="d" status={data.metrics.leadTime > 4 ? 'bad' : 'good'} subtitle="Lead Time: PR Opened → Prod" trend="down" />
-              <MetricCard index={1} label="Dev Efficiency" value={data.metrics.cycleTime} unit="d" status={data.metrics.cycleTime > 3 ? 'bad' : 'good'} subtitle="Cycle Time: In Progress → Done" trend="up" />
-              <MetricCard index={2} label="Code Quality" value={(data.metrics.bugRate * 100).toFixed(0)} unit="%" status={data.metrics.bugRate > 0.3 ? 'bad' : 'good'} subtitle="Bug Rate: Escaped Bugs" trend="up" />
-              <MetricCard index={3} label="Release Agility" value={data.metrics.deploymentFrequency} unit="/mo" status={data.metrics.deploymentFrequency < 5 ? 'bad' : 'good'} subtitle="Deployment Frequency" trend="down" />
-              <MetricCard index={4} label="Contribution Flow" value={data.metrics.prThroughput} unit=" PRs/mo" status={data.metrics.prThroughput < 5 ? 'bad' : 'good'} subtitle="PR Throughput" trend="up" />
-            </section>
+                <section className="metrics-grid">
+                  <MetricCard index={0} label="Delivery Speed" value={data.metrics.leadTime} unit="d" status={data.metrics.leadTime > 4 ? 'bad' : 'good'} subtitle="Lead Time: PR Opened → Prod" trend="down" />
+                  <MetricCard index={1} label="Dev Efficiency" value={data.metrics.cycleTime} unit="d" status={data.metrics.cycleTime > 3 ? 'bad' : 'good'} subtitle="Cycle Time: In Progress → Done" trend="up" />
+                  <MetricCard index={2} label="Code Quality" value={(data.metrics.bugRate * 100).toFixed(0)} unit="%" status={data.metrics.bugRate > 0.3 ? 'bad' : 'good'} subtitle="Bug Rate: Escaped Bugs" trend="up" />
+                  <MetricCard index={3} label="Release Agility" value={data.metrics.deploymentFrequency} unit="/mo" status={data.metrics.deploymentFrequency < 5 ? 'bad' : 'good'} subtitle="Deployment Frequency" trend="down" />
+                  <MetricCard index={4} label="Contribution Flow" value={data.metrics.prThroughput} unit=" PRs/mo" status={data.metrics.prThroughput < 5 ? 'bad' : 'good'} subtitle="PR Throughput" trend="up" />
+                </section>
 
-            <InsightPanel
-              metrics={data.metrics}
-              bottlenecks={data.bottlenecks}
-              suggestions={data.suggestions}
-              onExplain={handleExplain}
-            />
+                <InsightPanel
+                  metrics={data.metrics}
+                  bottlenecks={data.bottlenecks}
+                  suggestions={data.suggestions}
+                  onExplain={handleExplain}
+                  loading={aiLoading}
+                  explanation={explanation}
+                />
+              </>
+            )}
           </>
         )}
       </main>

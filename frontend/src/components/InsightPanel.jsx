@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 
-const InsightPanel = ({ metrics, bottlenecks, suggestions, onExplain }) => {
+const InsightPanel = ({ metrics, bottlenecks, suggestions, onExplain, loading = false, explanation = '' }) => {
   const priorityRef = useRef(null);
   const topPriority = bottlenecks.find(b => b.severity === 'high') || bottlenecks[0];
   const others = bottlenecks.filter(b => b.id !== topPriority?.id);
@@ -268,9 +268,19 @@ const InsightPanel = ({ metrics, bottlenecks, suggestions, onExplain }) => {
               {isPaused ? '▶' : '||'}
             </button>
           </div>
-          <div className="carousel-inner">
-            {renderChart(currentSlide)}
+          <div className="explanation-content">
+        {loading ? (
+          <div className="skeleton-insight-wrapper">
+             <div className="skeleton-text skeleton" style={{ width: '90%', marginBottom: '15px' }}></div>
+             <div className="skeleton-text skeleton" style={{ width: '100%', marginBottom: '15px' }}></div>
+             <div className="skeleton-text skeleton" style={{ width: '85%', marginBottom: '15px' }}></div>
+             <div className="skeleton-text skeleton" style={{ width: '95%', marginBottom: '15px' }}></div>
+             <div className="skeleton-text skeleton" style={{ width: '40%', marginBottom: '15px' }}></div>
           </div>
+        ) : (
+          <div dangerouslySetInnerHTML={{ __html: explanation }} />
+        )}
+      </div>
           <div className="carousel-dots">
             {[0, 1, 2, 3].map(i => (
               <div key={i} className={`dot ${currentSlide === i ? 'active' : ''}`} onClick={() => setCurrentSlide(i)}></div>

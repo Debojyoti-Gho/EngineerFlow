@@ -28,7 +28,20 @@ const ManagerView = ({ devs }) => {
     dev.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (loading) return <div className="manager-view-loading">Aggregating team metrics...</div>;
+  if (loading) return (
+    <div className="manager-skeleton-container">
+      <div className="skeleton-row skeleton"></div>
+      {[1, 2, 3, 4, 5, 6, 7, 8].map(i => (
+        <div key={i} className="skeleton-row">
+          <div className="skeleton-avatar skeleton"></div>
+          <div className="skeleton-text skeleton"></div>
+          <div className="skeleton-text short skeleton"></div>
+          <div className="skeleton-text short skeleton"></div>
+          <div className="skeleton-text short skeleton"></div>
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <div className="manager-view-v2">

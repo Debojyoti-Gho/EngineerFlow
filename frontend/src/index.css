@@ -2630,3 +2630,66 @@ body {
 .m-bubble p:last-child, .message-bubble p:last-child {
   margin-bottom: 0;
 }
+
+/* --- SKELETON LOADING --- */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+.manager-skeleton-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skeleton-row {
+  height: 60px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 20px;
+}
+
+.skeleton-avatar { width: 40px; height: 40px; border-radius: 50%; }
+.skeleton-text { height: 12px; border-radius: 4px; flex: 1; }
+.skeleton-text.short { width: 60px; flex: none; }
+
+.dashboard-skeleton {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.skeleton-card {
+  height: 200px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skeleton-insight {
+  height: 400px;
+  width: 100%;
+  margin-top: 2rem;
+}
