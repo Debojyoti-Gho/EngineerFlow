@@ -76,7 +76,9 @@ function App() {
         <div className="nav-brand-slot">
           <div className="app-brand-premium" onClick={() => setView('ic')} style={{ cursor: 'pointer' }}>
               <div className="brand-logo-wrapper">
-                <img src="/favicon.png" alt="EngineerFlow Logo" className="logo-image-premium" />
+                <div className="logo-core">
+                  <span className="logo-spark">✦</span>
+                </div>
                 <div className="logo-orbit"></div>
               </div>
             <div className="brand-text">
