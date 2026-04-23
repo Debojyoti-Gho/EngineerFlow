@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAnalysis } from '../services/api';
+import ManagerAIChat from './ManagerAIChat';
 
 const ManagerView = ({ devs }) => {
   const [teamData, setTeamData] = useState([]);
@@ -37,17 +38,20 @@ const ManagerView = ({ devs }) => {
           <p className="manager-v2-subtitle">Deterministic aggregation of fleet performance metrics</p>
         </div>
         
-        <div className="manager-search-v2-wrapper">
-          <div className="search-v2-inner">
-            <span className="search-icon-v2">✦</span>
-            <input 
-              type="text" 
-              placeholder="Filter by engineer name..." 
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <div className="search-focus-glow"></div>
+        <div className="manager-actions-row">
+          <div className="manager-search-v2-wrapper">
+            <div className="search-v2-inner">
+              <span className="search-icon-v2">✦</span>
+              <input 
+                type="text" 
+                placeholder="Filter by engineer name..." 
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <div className="search-focus-glow"></div>
+            </div>
           </div>
+          <ManagerAIChat teamData={teamData} />
         </div>
       </div>
 

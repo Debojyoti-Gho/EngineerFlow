@@ -108,4 +108,50 @@ const chatWithAnalysis = async (message, data) => {
   }
 };
 
-module.exports = { explainAnalysis, chatWithAnalysis };
+const managerChat = async (message, teamData) => {
+  if (!GROQ_API_KEY) {
+    return { reply: "I'm currently in manual mode. How can I help you manage your team?" };
+  }
+
+  const prompt = `
+    You are a Senior Engineering Manager's AI Assistant. 
+    You have full visibility of the entire team's productivity metrics and health scores.
+    
+    TEAM CONTEXT:
+    ${JSON.stringify(teamData.map(d => ({ name: d.name, role: d.role, metrics: d.metrics, bottlenecks: d.bottlenecks })))}
+
+    MANAGER QUESTION: "${message}"
+
+    INSTRUCTIONS:
+    1. Provide insights across the entire team.
+    2. Identify who needs help, where resource allocation might be shifted, or which team-wide trends are concerning.
+    3. Be professional, strategic, and concise.
+    4. Refer to specific engineers by name if relevant.
+  `;
+
+  try {
+    const response = await axios.post(
+      'https://api.groq.com/openai/v1/chat/completions',
+      {
+        model: MODEL,
+        messages: [
+          { role: "system", content: "You are a strategic engineering leadership advisor." },
+          { role: "user", content: prompt }
+        ],
+        temperature: 0.5
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${GROQ_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    return { reply: response.data.choices[0].message.content };
+  } catch (error) {
+    return { reply: "The leadership intelligence module is temporarily offline." };
+  }
+};
+
+module.exports = { explainAnalysis, chatWithAnalysis, managerChat };

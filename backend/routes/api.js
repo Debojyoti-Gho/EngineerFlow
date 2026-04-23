@@ -6,7 +6,7 @@ const path = require('path');
 const { calculateMetrics } = require('../services/metricsEngine');
 const { identifyBottlenecks, deterministicSearch } = require('../services/ruleEngine');
 const { getSuggestions } = require('../services/ragService');
-const { explainAnalysis, chatWithAnalysis } = require('../services/llmService');
+const { explainAnalysis, chatWithAnalysis, managerChat } = require('../services/llmService');
 
 const loadDevs = () => JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Dim_Developers.json'), 'utf8'));
 
@@ -46,6 +46,12 @@ router.post('/explain', async (req, res) => {
 router.post('/chat', async (req, res) => {
   const { message, context } = req.body;
   const reply = await chatWithAnalysis(message, context);
+  res.json(reply);
+});
+
+router.post('/manager/chat', async (req, res) => {
+  const { message, teamData } = req.body;
+  const reply = await managerChat(message, teamData);
   res.json(reply);
 });
 
