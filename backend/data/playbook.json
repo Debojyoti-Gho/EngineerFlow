@@ -1,0 +1,27 @@
+{
+  "PR Review Bottleneck": [
+    "Break PRs into smaller chunks (under 200 lines).",
+    "Request early peer reviews during the drafting stage.",
+    "Implement automated linting to reduce trivial review comments."
+  ],
+  "Development Bottleneck": [
+    "Refine technical requirements before starting work.",
+    "Pair program on complex modules.",
+    "Identify and clear technical debt in core files."
+  ],
+  "Quality Bottleneck": [
+    "Increase unit test coverage for new features.",
+    "Implement a 'zero-bug' policy for current sprint.",
+    "Add integration tests to catch edge cases earlier."
+  ],
+  "Release Bottleneck": [
+    "Automate deployment scripts.",
+    "Enable blue-green deployments for faster rollbacks.",
+    "Review CI/CD pipeline for flaky tests."
+  ],
+  "Contribution Bottleneck": [
+    "Set aside dedicated 'Deep Work' blocks for coding.",
+    "Reduce meeting overhead for the IC.",
+    "Automate repetitive developer tasks."
+  ]
+}

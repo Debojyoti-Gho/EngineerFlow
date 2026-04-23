@@ -1,0 +1,74 @@
+[
+  {
+    "id": "issue_1",
+    "developerId": "dev_1",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-11T10:00:00Z",
+    "done_at": "2026-04-15T10:00:00Z"
+  },
+  {
+    "id": "issue_2",
+    "developerId": "dev_1",
+    "type": "Bug",
+    "status": "Done",
+    "in_progress_at": "2026-04-16T10:00:00Z",
+    "done_at": "2026-04-17T10:00:00Z"
+  },
+  {
+    "id": "issue_4",
+    "developerId": "dev_1",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-18T10:00:00Z",
+    "done_at": "2026-04-19T10:00:00Z"
+  },
+  {
+    "id": "issue_5",
+    "developerId": "dev_1",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-20T10:00:00Z",
+    "done_at": "2026-04-21T10:00:00Z"
+  },
+  {
+    "id": "issue_6",
+    "developerId": "dev_1",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-22T10:00:00Z",
+    "done_at": "2026-04-23T10:00:00Z"
+  },
+  {
+    "id": "issue_3",
+    "developerId": "dev_2",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-20T08:00:00Z",
+    "done_at": "2026-04-20T14:00:00Z"
+  },
+  {
+    "id": "issue_7",
+    "developerId": "dev_2",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-21T09:00:00Z",
+    "done_at": "2026-04-21T17:00:00Z"
+  },
+  {
+    "id": "issue_8",
+    "developerId": "dev_2",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-22T08:00:00Z",
+    "done_at": "2026-04-22T16:00:00Z"
+  },
+  {
+    "id": "issue_9",
+    "developerId": "dev_2",
+    "type": "Feature",
+    "status": "Done",
+    "in_progress_at": "2026-04-23T08:00:00Z",
+    "done_at": "2026-04-23T16:00:00Z"
+  }
+]
