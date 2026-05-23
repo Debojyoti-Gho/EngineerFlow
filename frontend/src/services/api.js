@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
-  || (import.meta.env.PROD ? '/api' : 'http://localhost:5001/api');
-
 const API = axios.create({ 
-  baseURL: API_BASE_URL
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api' 
 });
 
 export const getDevelopers = async () => {
@@ -24,15 +21,5 @@ export const postExplain = async (analysisData) => {
 
 export const getCoachingNudge = async (devId) => {
   const res = await API.get(`/coaching-nudge/${devId}`);
-  return res.data;
-};
-
-export const searchDevelopers = async (query) => {
-  const res = await API.post('/search-developers', { query });
-  return res.data;
-};
-
-export const getRawData = async (devId) => {
-  const res = await API.get(`/raw-data/${devId}`);
   return res.data;
 };

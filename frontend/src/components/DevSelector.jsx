@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { searchDevelopers } from '../services/api';
 
 const DevSelector = ({ devs, selectedDevId, onSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +14,12 @@ const DevSelector = ({ devs, selectedDevId, onSelect }) => {
       if (search.length > 3) {
         setIsAnalyzing(true);
         try {
-          const data = await searchDevelopers(search);
+          const response = await fetch('http://localhost:5001/api/search-developers', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: search })
+          });
+          const data = await response.json();
           setRankedIds(data.rankedIds);
         } catch (error) {
           console.error("Search failed", error);

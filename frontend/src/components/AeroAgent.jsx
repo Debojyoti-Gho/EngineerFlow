@@ -2,22 +2,10 @@ import React, { useState, useEffect, useMemo } from 'react';
 import './AeroAgent.css';
 import { getCoachingNudge } from '../services/api';
 
-const createDefaultNudge = (developer) => {
-  const firstName = developer?.name?.split(' ')[0] || 'Engineer';
-
-  return {
-    short: `Good morning, ${firstName}! Your coaching summary is ready.`,
-    detailed: `Aero is reviewing ${firstName}'s delivery metrics and recent activity to identify today's highest-value improvement.`,
-    impact: 'Keeping the current bottleneck visible protects delivery predictability and team focus.',
-    action: 'Review the most constrained metric on this profile and take one targeted improvement action today.',
-    actionType: null
-  };
-};
-
 const AeroAgent = ({ developer, metrics, activity, view = 'ic', devId }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [showNudge, setShowNudge] = useState(false);
-  const [nudgeData, setNudgeData] = useState(() => createDefaultNudge(developer));
+  const [nudgeData, setNudgeData] = useState({ short: '', detailed: '', impact: '', action: '', actionType: null });
   const [points, setPoints] = useState(0);
   const [actionState, setActionState] = useState('idle'); // idle | shared | skipped
   const [isLoading, setIsLoading] = useState(false);
@@ -53,15 +41,11 @@ const AeroAgent = ({ developer, metrics, activity, view = 'ic', devId }) => {
     // Try to get a real LLM-generated nudge from the backend (RAG simulation)
     const fetchLLMNudge = async () => {
       setIsLoading(true);
-      setNudgeData(createDefaultNudge(developer));
       try {
         if (devId) {
           const llmNudge = await getCoachingNudge(devId);
           if (llmNudge?.short) {
-            setNudgeData({
-              ...createDefaultNudge(developer),
-              ...llmNudge
-            });
+            setNudgeData(llmNudge);
             setActionState('idle');
             setShowNudge(true);
             setIsLoading(false);
@@ -74,7 +58,14 @@ const AeroAgent = ({ developer, metrics, activity, view = 'ic', devId }) => {
       }
 
       // Simple Fallback (Minimalist, so it doesn't look like a generic report)
-      setNudgeData(createDefaultNudge(developer));
+      const firstName = developer?.name?.split(' ')[0] || 'Engineer';
+      setNudgeData({
+        short: `Good morning, ${firstName}! Ready to level up to Level 3 today?`,
+        detailed: `I'm analyzing your recent PRs and cycle time to find your next best action.`,
+        impact: 'Building consistent engineering habits is the fastest way to elite practice.',
+        action: 'Check your active pull requests for any pending reviews.',
+        actionType: null
+      });
       setActionState('idle');
       setShowNudge(true);
       setIsLoading(false);
@@ -84,11 +75,6 @@ const AeroAgent = ({ developer, metrics, activity, view = 'ic', devId }) => {
 
     fetchLLMNudge();
   }, [developer, metrics, activity, maturityLevel, isManager, devId]);
-
-  const displayNudge = {
-    ...createDefaultNudge(developer),
-    ...nudgeData
-  };
 
   const healthCheckConfig = `# .github/workflows/deploy.yml
 - name: Post-Deploy Health Check
@@ -118,7 +104,7 @@ const AeroAgent = ({ developer, metrics, activity, view = 'ic', devId }) => {
       
       {showNudge && !isLoading && !isExpanded && (
         <div className="aero-nudge-bubble show" onClick={() => setIsExpanded(true)}>
-          <p>{displayNudge.short}</p>
+          <p>{nudgeData.short}</p>
           <div className="nudge-tail"></div>
         </div>
       )}
@@ -144,18 +130,18 @@ const AeroAgent = ({ developer, metrics, activity, view = 'ic', devId }) => {
                 <span className="sparkle-icon">✨</span>
                 <h5>Contextual Insight</h5>
               </div>
-              <p className="insight-detailed">{displayNudge.detailed}</p>
+              <p className="insight-detailed">{nudgeData.detailed}</p>
               
               <div className="insight-impact">
                 <span className="impact-label">Business Impact:</span>
-                <p>{displayNudge.impact}</p>
+                <p>{nudgeData.impact}</p>
               </div>
 
               <div className="insight-action-call">
                 <span className="action-label">Recommended Action:</span>
-                <p>{displayNudge.action}</p>
+                <p>{nudgeData.action}</p>
 
-                {displayNudge.actionType === 'share_config' && actionState === 'idle' && (
+                {nudgeData.actionType === 'share_config' && actionState === 'idle' && (
                   <div className="action-buttons">
                     <button className="action-yes-btn" onClick={() => setActionState('shared')}>
                       ✅ Yes, show me the config
