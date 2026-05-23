@@ -1,62 +1,52 @@
 [
   {
     "id": "dev_1",
-    "name": "Alice Developer",
-    "role": "Full Stack"
+    "name": "Sarah Chen",
+    "role": "Staff Engineer"
   },
   {
     "id": "dev_2",
-    "name": "Bob Engineer",
-    "role": "Backend"
+    "name": "Marcus Thorne",
+    "role": "Senior Engineer"
   },
   {
     "id": "dev_3",
-    "name": "Sarah Chen",
-    "role": "Senior Frontend"
+    "name": "David Kim",
+    "role": "Software Engineer II"
   },
   {
     "id": "dev_4",
-    "name": "Marcus Thorne",
-    "role": "Backend Architect"
+    "name": "Jordan Smith",
+    "role": "Software Engineer III"
   },
   {
     "id": "dev_5",
-    "name": "Elena Rodriguez",
-    "role": "DevOps Lead"
+    "name": "Priya Sharma",
+    "role": "Staff Engineer"
   },
   {
     "id": "dev_6",
-    "name": "David Kim",
-    "role": "Product Engineer"
+    "name": "Taylor Vance",
+    "role": "Senior Engineer"
   },
   {
     "id": "dev_7",
-    "name": "Priya Sharma",
-    "role": "QA Automation"
+    "name": "Li Na",
+    "role": "Software Engineer III"
   },
   {
     "id": "dev_8",
-    "name": "Alex Rivera",
-    "role": "Security Engineer"
+    "name": "Omar Hassan",
+    "role": "Software Engineer II"
   },
   {
     "id": "dev_9",
-    "name": "Jordan Smith",
-    "role": "Full Stack"
+    "name": "Alex Rivera",
+    "role": "Engineering Manager"
   },
   {
     "id": "dev_10",
-    "name": "Sami Al-Farsi",
-    "role": "Junior Developer"
-  },
-  {
-    "id": "dev_11",
-    "name": "Taylor Vance",
-    "role": "Platform Engineer"
-  },
-  {
-    "id": "dev_12",
-    "name": "Li Na",
-    "role": "Site Reliability"
+    "name": "Elena Rodriguez",
+    "role": "Engineering Manager"
   }
 ]

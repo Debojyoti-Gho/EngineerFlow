@@ -6,7 +6,7 @@ const path = require('path');
 const { calculateMetrics } = require('../services/metricsEngine');
 const { identifyBottlenecks, deterministicSearch } = require('../services/ruleEngine');
 const { getSuggestions } = require('../services/ragService');
-const { explainAnalysis, chatWithAnalysis, managerChat } = require('../services/llmService');
+const { explainAnalysis, chatWithAnalysis, managerChat, generateCoachingNudge } = require('../services/llmService');
 
 const loadDevs = () => JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Dim_Developers.json'), 'utf8'));
 
@@ -18,7 +18,79 @@ router.get('/analysis/:devId', (req, res) => {
   const bottlenecks = identifyBottlenecks(metrics);
   const suggestions = getSuggestions(bottlenecks);
 
-  res.json({ metrics, bottlenecks, suggestions });
+  // Load rich coaching data for the interview narrative
+  let activity = null;
+  try {
+    const coachingData = JSON.parse(fs.readFileSync('/Users/debojyotighosh/.gemini/antigravity/scratch/coaching_data.json', 'utf8'));
+    const devMeta = loadDevs().find(d => d.id === devId);
+    
+    // Find matching engineer by name in the coaching data
+    let richDev = null;
+    coachingData.teams.forEach(team => {
+      const found = team.engineers.find(e => `${e.firstName} ${e.lastName}` === devMeta?.name);
+      if (found) richDev = found;
+    });
+
+    if (richDev) {
+      activity = richDev.todaysActivity;
+      // Inject all 6 foundation metrics from the interview framework
+      metrics.aiAdoption = richDev.kpis.aiCodingToolAdoptionPercent;
+      metrics.maturityLevel = richDev.maturityLevel;
+      metrics.automationRate = richDev.kpis.fullyAutomatedDeploymentsPercent;
+      metrics.exceptions = richDev.kpis.authorisedPolicyExceptionsPerQuarter;
+      metrics.deploymentFrequency = richDev.kpis.deploymentFrequencyPerWeek;
+      metrics.cycleTime = richDev.kpis.ticketCycleTimeDays;
+      metrics.bugRate = richDev.kpis.changeFailureRatePercent / 100;
+      metrics.testCoverage = richDev.sprintSummary.testCoverageEndPercent;
+    }
+  } catch (err) {
+    console.error("Coaching data not found, falling back to deterministic only.");
+  }
+
+  res.json({ metrics, bottlenecks, suggestions, activity });
+});
+
+// Real LLM-powered coaching nudge endpoint (RAG simulation layer)
+router.get('/coaching-nudge/:devId', async (req, res) => {
+  const { devId } = req.params;
+  try {
+    const coachingData = JSON.parse(fs.readFileSync('/Users/debojyotighosh/.gemini/antigravity/scratch/coaching_data.json', 'utf8'));
+    const devMeta = loadDevs().find(d => d.id === devId);
+
+    let richDev = null;
+    let teamName = 'Unknown Team';
+    coachingData.teams.forEach(team => {
+      const found = team.engineers.find(e => `${e.firstName} ${e.lastName}` === devMeta?.name);
+      if (found) { richDev = found; teamName = team.teamName; }
+    });
+
+    if (!richDev) return res.json({ short: 'Good morning! Ready to level up today?', detailed: '', impact: '', action: '', actionType: null });
+
+    const nudge = richDev.role === 'manager' 
+      ? {
+          isManager: true,
+          teamName,
+          ...richDev.teamSummary,
+          short: `Team median is Level ${richDev.teamSummary.medianTeamMaturityLevel}. ${richDev.teamSummary.blockedContributors[0].name} is stuck.`,
+          detailed: `${richDev.teamSummary.blockedContributors[0].name} is blocked: ${richDev.teamSummary.blockedContributors[0].reason}`,
+          impact: "This is dragging down the team's median maturity and delivery velocity.",
+          action: richDev.teamSummary.coachingActions[0],
+          actionType: 'manager_action'
+        }
+      : await generateCoachingNudge({
+          firstName: richDev.firstName,
+          teamName,
+          maturityLevel: richDev.maturityLevel,
+          metrics: richDev.kpis,
+          todaysActivity: richDev.todaysActivity,
+          sprintSummary: richDev.sprintSummary
+        });
+
+    res.json(nudge);
+  } catch (err) {
+    console.error('Coaching nudge route error:', err.message);
+    res.json({ short: 'Check your metrics today.', detailed: '', impact: '', action: '', actionType: null });
+  }
 });
 
 router.get('/raw-data/:devId', (req, res) => {

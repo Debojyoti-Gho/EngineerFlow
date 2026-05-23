@@ -8,6 +8,7 @@ import CosmicBackground from './components/CosmicBackground';
 import DevSelector from './components/DevSelector';
 import ManagerView from './components/ManagerView';
 import DataExplorer from './components/DataExplorer';
+import AeroAgent from './components/AeroAgent';
 
 // Context mapping for interview-ready terminology
 const METRIC_DETAILS = {
@@ -187,6 +188,14 @@ function App() {
           onClose={() => setShowExplorer(false)} 
         />
       )}
+
+      <AeroAgent 
+        developer={devs.find(d => d.id === selectedDev)} 
+        metrics={data?.metrics}
+        activity={data?.activity} 
+        view={view}
+        devId={selectedDev}
+      />
     </div>
   );
 }

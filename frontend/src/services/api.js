@@ -16,6 +16,10 @@ export const getAnalysis = async (devId) => {
 
 export const postExplain = async (analysisData) => {
   const res = await API.post('/explain', analysisData);
-  // Ensure we return the data object directly
+  return res.data;
+};
+
+export const getCoachingNudge = async (devId) => {
+  const res = await API.get(`/coaching-nudge/${devId}`);
   return res.data;
 };

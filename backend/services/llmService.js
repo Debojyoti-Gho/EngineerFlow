@@ -158,4 +158,114 @@ const managerChat = async (message, teamData) => {
   }
 };
 
-module.exports = { explainAnalysis, chatWithAnalysis, managerChat };
+/**
+ * COACHING NUDGE GENERATOR (RAG-SIMULATION LAYER)
+ * 
+ * This function simulates what a RAG pipeline does in production:
+ * 1. Retrieves the engineer's full context (metrics, PRs, sprint, team)
+ * 2. Assembles it into a grounded prompt  
+ * 3. Calls the LLM to generate a specific, non-generic coaching message
+ * 
+ * In a production system, step 1 would pull from a vector store
+ * containing the last 7 days of engineer events. Here we use the
+ * rich dummy data directly as the "retrieved context."
+ */
+const generateCoachingNudge = async (engineerContext) => {
+  if (!GROQ_API_KEY) {
+    // Graceful fallback — deterministic nudge
+    return {
+      short: `Hey ${engineerContext.firstName}, your metrics need attention today.`,
+      detailed: `Your change failure rate is above the 15% threshold. Review your deployment pipeline before today's release.`,
+      impact: `Escaped bugs increase customer churn and MTTR significantly.`,
+      action: `Add a post-deployment health check to your pipeline.`,
+      actionType: null
+    };
+  }
+
+  const { firstName, metrics, todaysActivity, sprintSummary, teamName, maturityLevel } = engineerContext;
+
+  const stalePR = todaysActivity?.activePullRequests?.find(pr => pr.hoursOpen > 48);
+  const missingTestPR = todaysActivity?.activePullRequests?.find(pr => !pr.hasTestsIncluded);
+
+  const contextBlock = `
+ENGINEER CONTEXT (Freshly Retrieved):
+- Name: ${firstName}
+- Team: ${teamName}
+- Current Maturity Level: ${maturityLevel} (Goal: Level 3)
+
+TODAY'S ACTIVITY:
+- AI Tool Usage Today: ${todaysActivity?.aiCodingToolUsageMinutes || 0} minutes
+- Tests Written Today: ${todaysActivity?.testsWrittenToday || 0}
+- Peer Reviews Given: ${todaysActivity?.peerCodeReviewsGivenToday || 0}
+- Active PRs: ${JSON.stringify(todaysActivity?.activePullRequests || [])}
+
+CURRENT KPIs (vs Thresholds):
+- Change Failure Rate: ${metrics.changeFailureRatePercent}% (threshold: <15%)
+- Deployment Frequency: ${metrics.deploymentFrequencyPerWeek}/week (threshold: ≥1/week)
+- AI Tool Adoption: ${metrics.aiCodingToolAdoptionPercent}% (threshold: >60%)
+- Ticket Cycle Time: ${metrics.ticketCycleTimeDays} days (threshold: <55 days)
+- Automated Deployments: ${metrics.fullyAutomatedDeploymentsPercent}% (threshold: >60%)
+
+LAST SPRINT:
+- Velocity: ${sprintSummary?.velocityPercent}%
+- Build Failures: ${sprintSummary?.buildFailures}
+- Commits Missing Ticket Links: ${sprintSummary?.commitsMissingTicketLinks}
+`;
+
+  const systemPrompt = `You are Aero, a hyper-personalised engineering coaching agent. 
+Your coaching is grounded in real-time data retrieved from the engineer's tools. 
+You are NOT a dashboard — you are a coach who shows up at the right moment with one specific, actionable message.
+Never give generic advice. Every word must reference the engineer's actual data.`;
+
+  const userPrompt = `${contextBlock}
+
+Based on the SINGLE most urgent issue visible in this engineer's data, generate a coaching nudge as a JSON object with exactly these 4 fields:
+
+{
+  "short": "One punchy sentence (max 15 words) for the popup bubble. Use their name.",
+  "detailed": "2-3 sentences explaining the specific situation using their actual numbers. Be direct.",
+  "impact": "One sentence on the business/team consequence if this is not fixed today.",
+  "action": "The single most specific thing they should do RIGHT NOW. Name a specific teammate if relevant."
+}
+
+${stalePR ? `Priority: The PR "${stalePR.title}" has been open ${stalePR.hoursOpen}h with ${stalePR.reviewers} reviewer(s) and ${stalePR.hasTestsIncluded ? 'has' : 'is MISSING'} tests.` : ''}
+
+Respond with ONLY the JSON object. No explanation, no markdown.`;
+
+  try {
+    const response = await axios.post(
+      'https://api.groq.com/openai/v1/chat/completions',
+      {
+        model: MODEL,
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt }
+        ],
+        temperature: 0.3,
+        response_format: { type: "json_object" }
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${GROQ_API_KEY}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    const parsed = JSON.parse(response.data.choices[0].message.content);
+    // Detect if this nudge should surface the config share action
+    const needsConfig = (engineerContext.metrics.changeFailureRatePercent || 0) > 15;
+    return { ...parsed, actionType: needsConfig ? 'share_config' : null };
+  } catch (error) {
+    console.error('Coaching nudge LLM error:', error.message);
+    return {
+      short: `Hey ${firstName}, one urgent thing needs your attention today.`,
+      detailed: `Your metrics show a breach in at least one key threshold. Check your pipeline before today's release.`,
+      impact: `Unresolved issues compound across sprints and slow your path to Level 3.`,
+      action: `Review your most critical KPI and take one targeted action before end of day.`,
+      actionType: null
+    };
+  }
+};
+
+module.exports = { explainAnalysis, chatWithAnalysis, managerChat, generateCoachingNudge };
