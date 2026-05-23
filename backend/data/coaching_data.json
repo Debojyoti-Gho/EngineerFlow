@@ -1,0 +1,438 @@
+{
+  "teams": [
+    {
+      "teamName": "Payments Infrastructure",
+      "manager": {
+        "firstName": "Elena",
+        "lastName": "Rodriguez",
+        "email": "elena.rodriguez@company.com",
+        "jobTitle": "Engineering Manager",
+        "role": "manager",
+        "teamSummary": {
+          "medianTeamMaturityLevel": 2,
+          "sprintVelocityTrend": [
+            85,
+            90,
+            82
+          ],
+          "blockedContributors": [
+            {
+              "name": "David Kim",
+              "reason": "Blocked on security review for the new Stripe webhook handler (PR open for 72 hours)."
+            }
+          ],
+          "coachingActions": [
+            "Pair with David Kim on breaking down the Stripe webhook PR to reduce review cycle time.",
+            "Nudge Jordan Smith to add post-deployment health checks to reduce his 18% change failure rate.",
+            "Recognize Sarah Chen in the next team meeting for hitting 100% automated deployments and holding Level 3."
+          ]
+        }
+      },
+      "engineers": [
+        {
+          "firstName": "Sarah",
+          "lastName": "Chen",
+          "email": "sarah.chen@company.com",
+          "jobTitle": "Staff Engineer",
+          "role": "individual contributor",
+          "maturityLevel": 3,
+          "kpis": {
+            "ticketCycleTimeDays": 12,
+            "deploymentFrequencyPerWeek": 4,
+            "changeFailureRatePercent": 2,
+            "aiCodingToolAdoptionPercent": 85,
+            "fullyAutomatedDeploymentsPercent": 100,
+            "authorisedPolicyExceptionsPerQuarter": 0
+          },
+          "sprintSummary": {
+            "storiesCommitted": 8,
+            "storiesCompleted": 8,
+            "velocityPercent": 100,
+            "testCoverageStartPercent": 82,
+            "testCoverageEndPercent": 85,
+            "buildFailures": 1,
+            "productionIncidentsCaused": 0,
+            "commitsMissingTicketLinks": 0
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "feat: implement idempotent retries for core payment gateway",
+                "hoursOpen": 4,
+                "reviewers": 2,
+                "hasTestsIncluded": true,
+                "businessImpact": "Prevents double-charging customers during network partitions. High priority."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "feat(payments): add idempotency key to retry logic",
+                "hasTicketReference": true
+              },
+              {
+                "message": "test(payments): unit tests for retry backoff",
+                "hasTicketReference": true
+              }
+            ],
+            "aiCodingToolUsageMinutes": 120,
+            "testsWrittenToday": 15,
+            "peerCodeReviewsGivenToday": 3
+          }
+        },
+        {
+          "firstName": "Marcus",
+          "lastName": "Thorne",
+          "email": "marcus.thorne@company.com",
+          "jobTitle": "Senior Engineer",
+          "role": "individual contributor",
+          "maturityLevel": 2,
+          "kpis": {
+            "ticketCycleTimeDays": 45,
+            "deploymentFrequencyPerWeek": 1.5,
+            "changeFailureRatePercent": 10,
+            "aiCodingToolAdoptionPercent": 65,
+            "fullyAutomatedDeploymentsPercent": 70,
+            "authorisedPolicyExceptionsPerQuarter": 1
+          },
+          "sprintSummary": {
+            "storiesCommitted": 5,
+            "storiesCompleted": 4,
+            "velocityPercent": 80,
+            "testCoverageStartPercent": 75,
+            "testCoverageEndPercent": 75,
+            "buildFailures": 3,
+            "productionIncidentsCaused": 0,
+            "commitsMissingTicketLinks": 2
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "fix: resolve race condition in ledger reconciliation",
+                "hoursOpen": 28,
+                "reviewers": 1,
+                "hasTestsIncluded": false,
+                "businessImpact": "Fixes rare out-of-balance ledger entries at month end."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "fix: ledger race condition lock update",
+                "hasTicketReference": true
+              }
+            ],
+            "aiCodingToolUsageMinutes": 45,
+            "testsWrittenToday": 0,
+            "peerCodeReviewsGivenToday": 1
+          }
+        },
+        {
+          "firstName": "David",
+          "lastName": "Kim",
+          "email": "david.kim@company.com",
+          "jobTitle": "Software Engineer II",
+          "role": "individual contributor",
+          "maturityLevel": 1,
+          "kpis": {
+            "ticketCycleTimeDays": 62,
+            "deploymentFrequencyPerWeek": 0.5,
+            "changeFailureRatePercent": 12,
+            "aiCodingToolAdoptionPercent": 40,
+            "fullyAutomatedDeploymentsPercent": 40,
+            "authorisedPolicyExceptionsPerQuarter": 2
+          },
+          "sprintSummary": {
+            "storiesCommitted": 4,
+            "storiesCompleted": 2,
+            "velocityPercent": 50,
+            "testCoverageStartPercent": 60,
+            "testCoverageEndPercent": 61,
+            "buildFailures": 8,
+            "productionIncidentsCaused": 1,
+            "commitsMissingTicketLinks": 5
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "feat: new Stripe webhook handler for international payments",
+                "hoursOpen": 72,
+                "reviewers": 0,
+                "hasTestsIncluded": false,
+                "businessImpact": "Enables expansion into EU markets. Blocked on security review."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "wip stripe webhook",
+                "hasTicketReference": false
+              }
+            ],
+            "aiCodingToolUsageMinutes": 15,
+            "testsWrittenToday": 0,
+            "peerCodeReviewsGivenToday": 0
+          }
+        },
+        {
+          "firstName": "Jordan",
+          "lastName": "Smith",
+          "email": "jordan.smith@company.com",
+          "jobTitle": "Software Engineer III",
+          "role": "individual contributor",
+          "maturityLevel": 1,
+          "kpis": {
+            "ticketCycleTimeDays": 30,
+            "deploymentFrequencyPerWeek": 2,
+            "changeFailureRatePercent": 18,
+            "aiCodingToolAdoptionPercent": 50,
+            "fullyAutomatedDeploymentsPercent": 50,
+            "authorisedPolicyExceptionsPerQuarter": 1
+          },
+          "sprintSummary": {
+            "storiesCommitted": 6,
+            "storiesCompleted": 6,
+            "velocityPercent": 100,
+            "testCoverageStartPercent": 68,
+            "testCoverageEndPercent": 65,
+            "buildFailures": 5,
+            "productionIncidentsCaused": 2,
+            "commitsMissingTicketLinks": 3
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "refactor: simplify payout batching logic",
+                "hoursOpen": 12,
+                "reviewers": 1,
+                "hasTestsIncluded": true,
+                "businessImpact": "Reduces infra costs by batching payouts more aggressively."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "refactor: payout batching",
+                "hasTicketReference": true
+              },
+              {
+                "message": "fix tests",
+                "hasTicketReference": false
+              }
+            ],
+            "aiCodingToolUsageMinutes": 30,
+            "testsWrittenToday": 2,
+            "peerCodeReviewsGivenToday": 0
+          }
+        }
+      ]
+    },
+    {
+      "teamName": "Risk and Fraud Detection",
+      "manager": {
+        "firstName": "Alex",
+        "lastName": "Rivera",
+        "email": "alex.rivera@company.com",
+        "jobTitle": "Engineering Manager",
+        "role": "manager",
+        "teamSummary": {
+          "medianTeamMaturityLevel": 1.5,
+          "sprintVelocityTrend": [
+            75,
+            70,
+            85
+          ],
+          "blockedContributors": [
+            {
+              "name": "Omar Hassan",
+              "reason": "Struggling with the new AI compliance scanning tool, resulting in multiple policy exceptions."
+            }
+          ],
+          "coachingActions": [
+            "Run a workshop on the new compliance scanning tool for Omar and the junior engineers.",
+            "Encourage Priya Sharma to run a mob programming session to boost AI coding tool adoption in the team.",
+            "Work with Taylor Vance on breaking down the KYC verification epic into smaller, deployable chunks."
+          ]
+        }
+      },
+      "engineers": [
+        {
+          "firstName": "Priya",
+          "lastName": "Sharma",
+          "email": "priya.sharma@company.com",
+          "jobTitle": "Staff Engineer",
+          "role": "individual contributor",
+          "maturityLevel": 3,
+          "kpis": {
+            "ticketCycleTimeDays": 18,
+            "deploymentFrequencyPerWeek": 3,
+            "changeFailureRatePercent": 1,
+            "aiCodingToolAdoptionPercent": 95,
+            "fullyAutomatedDeploymentsPercent": 90,
+            "authorisedPolicyExceptionsPerQuarter": 0
+          },
+          "sprintSummary": {
+            "storiesCommitted": 7,
+            "storiesCompleted": 7,
+            "velocityPercent": 100,
+            "testCoverageStartPercent": 88,
+            "testCoverageEndPercent": 89,
+            "buildFailures": 0,
+            "productionIncidentsCaused": 0,
+            "commitsMissingTicketLinks": 0
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "feat: integrate real-time ML scoring for card present transactions",
+                "hoursOpen": 6,
+                "reviewers": 3,
+                "hasTestsIncluded": true,
+                "businessImpact": "Expected to reduce POS fraud by 14%."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "feat(ml): real-time scoring integration",
+                "hasTicketReference": true
+              }
+            ],
+            "aiCodingToolUsageMinutes": 180,
+            "testsWrittenToday": 25,
+            "peerCodeReviewsGivenToday": 4
+          }
+        },
+        {
+          "firstName": "Taylor",
+          "lastName": "Vance",
+          "email": "taylor.vance@company.com",
+          "jobTitle": "Senior Engineer",
+          "role": "individual contributor",
+          "maturityLevel": 2,
+          "kpis": {
+            "ticketCycleTimeDays": 48,
+            "deploymentFrequencyPerWeek": 1,
+            "changeFailureRatePercent": 8,
+            "aiCodingToolAdoptionPercent": 70,
+            "fullyAutomatedDeploymentsPercent": 65,
+            "authorisedPolicyExceptionsPerQuarter": 1
+          },
+          "sprintSummary": {
+            "storiesCommitted": 5,
+            "storiesCompleted": 4,
+            "velocityPercent": 80,
+            "testCoverageStartPercent": 72,
+            "testCoverageEndPercent": 74,
+            "buildFailures": 2,
+            "productionIncidentsCaused": 0,
+            "commitsMissingTicketLinks": 1
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "feat: initial KYC document verification pipeline",
+                "hoursOpen": 45,
+                "reviewers": 1,
+                "hasTestsIncluded": true,
+                "businessImpact": "Core requirement for onboarding new merchants."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "feat(kyc): add document parsing lambda",
+                "hasTicketReference": true
+              }
+            ],
+            "aiCodingToolUsageMinutes": 60,
+            "testsWrittenToday": 5,
+            "peerCodeReviewsGivenToday": 2
+          }
+        },
+        {
+          "firstName": "Li",
+          "lastName": "Na",
+          "email": "li.na@company.com",
+          "jobTitle": "Software Engineer III",
+          "role": "individual contributor",
+          "maturityLevel": 1,
+          "kpis": {
+            "ticketCycleTimeDays": 35,
+            "deploymentFrequencyPerWeek": 1.5,
+            "changeFailureRatePercent": 16,
+            "aiCodingToolAdoptionPercent": 55,
+            "fullyAutomatedDeploymentsPercent": 80,
+            "authorisedPolicyExceptionsPerQuarter": 2
+          },
+          "sprintSummary": {
+            "storiesCommitted": 6,
+            "storiesCompleted": 5,
+            "velocityPercent": 83,
+            "testCoverageStartPercent": 65,
+            "testCoverageEndPercent": 65,
+            "buildFailures": 6,
+            "productionIncidentsCaused": 1,
+            "commitsMissingTicketLinks": 4
+          },
+          "todaysActivity": {
+            "activePullRequests": [
+              {
+                "title": "fix: false positive rate in velocity checks",
+                "hoursOpen": 18,
+                "reviewers": 1,
+                "hasTestsIncluded": false,
+                "businessImpact": "Reduces customer friction for frequent low-value transactions."
+              }
+            ],
+            "commitsToday": [
+              {
+                "message": "fix velocity check bounds",
+                "hasTicketReference": false
+              }
+            ],
+            "aiCodingToolUsageMinutes": 20,
+            "testsWrittenToday": 0,
+            "peerCodeReviewsGivenToday": 1
+          }
+        },
+        {
+          "firstName": "Omar",
+          "lastName": "Hassan",
+          "email": "omar.hassan@company.com",
+          "jobTitle": "Software Engineer II",
+          "role": "individual contributor",
+          "maturityLevel": 0,
+          "kpis": {
+            "ticketCycleTimeDays": 70,
+            "deploymentFrequencyPerWeek": 0.2,
+            "changeFailureRatePercent": 5,
+            "aiCodingToolAdoptionPercent": 20,
+            "fullyAutomatedDeploymentsPercent": 20,
+            "authorisedPolicyExceptionsPerQuarter": 6
+          },
+          "sprintSummary": {
+            "storiesCommitted": 3,
+            "storiesCompleted": 1,
+            "velocityPercent": 33,
+            "testCoverageStartPercent": 50,
+            "testCoverageEndPercent": 50,
+            "buildFailures": 12,
+            "productionIncidentsCaused": 0,
+            "commitsMissingTicketLinks": 8
+          },
+          "todaysActivity": {
+            "activePullRequests": [],
+            "commitsToday": [
+              {
+                "message": "updates",
+                "hasTicketReference": false
+              },
+              {
+                "message": "more updates",
+                "hasTicketReference": false
+              }
+            ],
+            "aiCodingToolUsageMinutes": 5,
+            "testsWrittenToday": 0,
+            "peerCodeReviewsGivenToday": 0
+          }
+        }
+      ]
+    }
+  ]
+}

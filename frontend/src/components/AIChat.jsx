@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
+import { API_BASE_URL } from '../services/api';
 
 const AIChat = ({ metrics, bottlenecks }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,8 +31,7 @@ const AIChat = ({ metrics, bottlenecks }) => {
     setIsLoading(true);
 
     try {
-      const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5001/api';
-      const response = await fetch(`${baseUrl}/chat`, {
+      const response = await fetch(`${API_BASE_URL}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

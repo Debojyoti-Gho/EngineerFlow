@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getRawData } from '../services/api';
 
 const DataExplorer = ({ devId, onClose }) => {
   const [data, setData] = useState(null);
@@ -9,8 +10,7 @@ const DataExplorer = ({ devId, onClose }) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5001/api/raw-data/${devId}`);
-        const json = await res.json();
+        const json = await getRawData(devId);
         setData(json);
       } catch (e) {
         console.error("Failed to fetch raw data", e);

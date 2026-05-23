@@ -8,7 +8,36 @@ const { identifyBottlenecks, deterministicSearch } = require('../services/ruleEn
 const { getSuggestions } = require('../services/ragService');
 const { explainAnalysis, chatWithAnalysis, managerChat, generateCoachingNudge } = require('../services/llmService');
 
-const loadDevs = () => JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Dim_Developers.json'), 'utf8'));
+const dataPath = (fileName) => path.join(__dirname, '../data', fileName);
+const loadJson = (fileName) => JSON.parse(fs.readFileSync(dataPath(fileName), 'utf8'));
+const loadDevs = () => loadJson('Dim_Developers.json');
+const loadCoachingData = () => loadJson('coaching_data.json');
+
+const findRichDeveloper = (devId) => {
+  const coachingData = loadCoachingData();
+  const devMeta = loadDevs().find(d => d.id === devId);
+
+  let richDev = null;
+  let teamName = 'Unknown Team';
+
+  coachingData.teams.forEach(team => {
+    const found = team.engineers.find(e => `${e.firstName} ${e.lastName}` === devMeta?.name);
+    if (found) {
+      richDev = found;
+      teamName = team.teamName;
+    }
+  });
+
+  return { richDev, teamName };
+};
+
+const createFallbackNudge = (name = 'there') => ({
+  short: `Good morning, ${name}! Your coaching summary is ready.`,
+  detailed: 'Aero reviewed the available engineering metrics and found a clear next step for today.',
+  impact: 'Keeping the current bottleneck visible helps protect delivery predictability and team focus.',
+  action: 'Review the most constrained metric on this profile and take one targeted improvement action today.',
+  actionType: null
+});
 
 router.get('/developers', (req, res) => res.json(loadDevs()));
 
@@ -21,15 +50,7 @@ router.get('/analysis/:devId', (req, res) => {
   // Load rich coaching data for the interview narrative
   let activity = null;
   try {
-    const coachingData = JSON.parse(fs.readFileSync('/Users/debojyotighosh/.gemini/antigravity/scratch/coaching_data.json', 'utf8'));
-    const devMeta = loadDevs().find(d => d.id === devId);
-    
-    // Find matching engineer by name in the coaching data
-    let richDev = null;
-    coachingData.teams.forEach(team => {
-      const found = team.engineers.find(e => `${e.firstName} ${e.lastName}` === devMeta?.name);
-      if (found) richDev = found;
-    });
+    const { richDev } = findRichDeveloper(devId);
 
     if (richDev) {
       activity = richDev.todaysActivity;
@@ -54,27 +75,28 @@ router.get('/analysis/:devId', (req, res) => {
 router.get('/coaching-nudge/:devId', async (req, res) => {
   const { devId } = req.params;
   try {
-    const coachingData = JSON.parse(fs.readFileSync('/Users/debojyotighosh/.gemini/antigravity/scratch/coaching_data.json', 'utf8'));
     const devMeta = loadDevs().find(d => d.id === devId);
+    const { richDev, teamName } = findRichDeveloper(devId);
 
-    let richDev = null;
-    let teamName = 'Unknown Team';
-    coachingData.teams.forEach(team => {
-      const found = team.engineers.find(e => `${e.firstName} ${e.lastName}` === devMeta?.name);
-      if (found) { richDev = found; teamName = team.teamName; }
-    });
+    if (!richDev) {
+      return res.json(createFallbackNudge(devMeta?.name?.split(' ')[0] || 'there'));
+    }
 
-    if (!richDev) return res.json({ short: 'Good morning! Ready to level up today?', detailed: '', impact: '', action: '', actionType: null });
+    const blockedContributor = richDev.teamSummary?.blockedContributors?.[0];
 
     const nudge = richDev.role === 'manager' 
       ? {
           isManager: true,
           teamName,
           ...richDev.teamSummary,
-          short: `Team median is Level ${richDev.teamSummary.medianTeamMaturityLevel}. ${richDev.teamSummary.blockedContributors[0].name} is stuck.`,
-          detailed: `${richDev.teamSummary.blockedContributors[0].name} is blocked: ${richDev.teamSummary.blockedContributors[0].reason}`,
+          short: blockedContributor
+            ? `Team median is Level ${richDev.teamSummary.medianTeamMaturityLevel}. ${blockedContributor.name} is stuck.`
+            : `Team median is Level ${richDev.teamSummary?.medianTeamMaturityLevel || 1}. No urgent blockers found.`,
+          detailed: blockedContributor
+            ? `${blockedContributor.name} is blocked: ${blockedContributor.reason}`
+            : 'The team has no urgent blocked contributors in the current coaching data.',
           impact: "This is dragging down the team's median maturity and delivery velocity.",
-          action: richDev.teamSummary.coachingActions[0],
+          action: richDev.teamSummary?.coachingActions?.[0] || 'Review team bottlenecks and confirm ownership for the next delivery risk.',
           actionType: 'manager_action'
         }
       : await generateCoachingNudge({
@@ -89,7 +111,7 @@ router.get('/coaching-nudge/:devId', async (req, res) => {
     res.json(nudge);
   } catch (err) {
     console.error('Coaching nudge route error:', err.message);
-    res.json({ short: 'Check your metrics today.', detailed: '', impact: '', action: '', actionType: null });
+    res.json(createFallbackNudge());
   }
 });
 
@@ -97,10 +119,10 @@ router.get('/raw-data/:devId', (req, res) => {
   const { devId } = req.params;
   
   // Load all mandatory fact tables
-  const prs = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Fact_Pull_Requests.json'), 'utf8'));
-  const deploys = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Fact_CI_Deployments.json'), 'utf8'));
-  const issues = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Fact_Jira_Issues.json'), 'utf8'));
-  const bugs = JSON.parse(fs.readFileSync(path.join(__dirname, '../data/Fact_Bug_Reports.json'), 'utf8'));
+  const prs = loadJson('Fact_Pull_Requests.json');
+  const deploys = loadJson('Fact_CI_Deployments.json');
+  const issues = loadJson('Fact_Jira_Issues.json');
+  const bugs = loadJson('Fact_Bug_Reports.json');
 
   res.json({
     prs: prs.filter(p => p.developerId === devId),
